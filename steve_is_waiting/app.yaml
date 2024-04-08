@@ -1,0 +1,12 @@
+runtime: python38
+env_variables:
+  FLASK_APP: "app.py"
+  FLASK_ENV: "production"
+entrypoint: gunicorn -b :$PORT app:app
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: auto
